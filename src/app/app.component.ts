@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient } from '@angular/common/http';
+import { GroupsService } from './components/services/groups/groups.service';
 
 
 @Component({
@@ -8,14 +9,27 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'frontend-keycloak-app';
+  myGroup = '';
   helloText = '';
 
-  constructor(private oauthService: OAuthService, private httpClient: HttpClient) { }
+
+  constructor(private oauthService: OAuthService, private httpClient: HttpClient,private groupsService: GroupsService ) { }
 
   logout() {
     this.oauthService.logOut();
+  }
+
+  ngOnInit(): void {
+    this.getMyUser();
+  }
+
+  getMyUser(){
+    this.groupsService.getMyGroup().subscribe(resultado=>{
+      console.log(resultado[0].name);
+      this.myGroup=resultado[0].name;
+    });
   }
 
   getHelloText() {
@@ -25,14 +39,8 @@ export class AppComponent {
         "Access-Control-Allow-Origin": "*"
       }
     }).subscribe(result => {
-      
-      console.log(result);
-
+      //console.log(result);
       this.helloText = result.message;
     });
-  }
-
-  getMyToken(){
-    return this.oauthService.getAccessToken();
   }
 }

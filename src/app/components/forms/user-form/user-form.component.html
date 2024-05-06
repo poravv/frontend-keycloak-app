@@ -1,4 +1,4 @@
-<h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-white ">Nuevo Usuario</h5>
+<h5 style="text-align: center;" class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-white ">Nuevo Usuario</h5>
 
 <form [formGroup]="userForm" class="w-full" (ngSubmit)="onSubmit()" novalidate>
   <div class="mb-5">
@@ -26,7 +26,6 @@
     <input type="password" id="password" class="form-control" placeholder="Password" formControlName="password">
     <div *ngIf="userForm.get('password')?.hasError('required') && userForm.get('password')?.touched" class="form-error">Password requerido</div>
   </div>
-  <button type="submit"
-    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
-  <button type="button" (click)="onClose()" class="text-white  ms-2 bg-gray-700 hover:bg-gray-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Cancel</button>
+  <button [disabled]="userForm.invalid" type="submit" class="text-white ms-2 bg-blue-700 hover:bg-blue-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+  <button type="button" (click)="onClose()" class="text-white ms-2 bg-gray-700 hover:bg-gray-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Cancel</button>
 </form>

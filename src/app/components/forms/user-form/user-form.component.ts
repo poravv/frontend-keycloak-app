@@ -28,6 +28,7 @@ export class UserFormComponent {
 
   onClose(){
     this.onCloseModel.emit(false);
+    this.userForm.reset();
   }
 
   ngOnChanges(): void {
@@ -55,7 +56,7 @@ export class UserFormComponent {
           });
       } else {
         this.usersService.createUser(this.userForm.value).subscribe((result)=>{
-          console.log(result);
+          //console.log(result);
             this.resetUserForm();
             this.toastr.success(result.message);
         });

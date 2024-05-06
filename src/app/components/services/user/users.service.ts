@@ -9,24 +9,23 @@ import { ApiResponse, IUser } from '../../model/User';
   providedIn: 'root'
 })
 export class UsersService {
-
+   
   constructor(private oauthService: OAuthService, private httpClient: HttpClient) { }
 
   getAllUsers():Observable<any> {
     return this.httpClient.get(`${environment.apiUrl}/keycloak/user/search`, {
       headers: {
-        'Authorization': `Bearer ${this.oauthService.getAccessToken()}`
+        'Authorization': `Bearer ${this.oauthService.getAccessToken()}`,
+        'Access-Control-Allow-Origin': '*',
       }
     });
   }
 
   getUser(userName:string):Observable<ApiResponse<IUser>>{
-
     return this.httpClient.get(`${environment.apiUrl}/keycloak/user/search/${userName}`, {
       headers: {
         'Authorization': `Bearer ${this.oauthService.getAccessToken()}`,
         'Access-Control-Allow-Origin': '*',
-        'responseType': 'text'
       }
     });
   }
@@ -36,7 +35,6 @@ export class UsersService {
       headers: {
         'Authorization': `Bearer ${this.oauthService.getAccessToken()}`,
         'Access-Control-Allow-Origin': '*',
-        'responseType': 'text'
       }
     });
   }

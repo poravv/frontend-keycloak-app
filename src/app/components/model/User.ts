@@ -11,5 +11,6 @@ export interface IUser{
     lastName:string;
     password:string;
     roles:string[];
+	enabled: boolean;
 }
 
