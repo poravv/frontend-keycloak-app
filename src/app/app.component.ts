@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient } from '@angular/common/http';
 import { GroupsService } from './components/services/groups/groups.service';
+import { UsersService } from './components/services/user/users.service';
 
 
 @Component({
@@ -15,19 +16,19 @@ export class AppComponent implements OnInit{
   helloText = '';
 
 
-  constructor(private oauthService: OAuthService, private httpClient: HttpClient,private groupsService: GroupsService ) { }
+  constructor(private oauthService: OAuthService, private httpClient: HttpClient,private usersService: UsersService ) { }
 
   logout() {
     this.oauthService.logOut();
   }
 
   ngOnInit(): void {
-    this.getMyUser();
+    //this.getMyUser();
   }
 
   getMyUser(){
-    this.groupsService.getMyGroup().subscribe(resultado=>{
-      console.log(resultado[0].name);
+    this.usersService.getMyGroup().subscribe(resultado=>{
+      //console.log(resultado[0].name);
       this.myGroup=resultado[0].name;
     });
   }

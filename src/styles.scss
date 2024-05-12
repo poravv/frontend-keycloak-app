@@ -1,20 +1,98 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@import "ngx-toastr/toastr";
-body {
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
-  @apply bg-slate-50;
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$frontend-keycloak-app-primary: mat.define-palette(mat.$indigo-palette);
+$frontend-keycloak-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$frontend-keycloak-app-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$frontend-keycloak-app-theme: mat.define-light-theme((
+  color: (
+    primary: $frontend-keycloak-app-primary,
+    accent: $frontend-keycloak-app-accent,
+    warn: $frontend-keycloak-app-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($frontend-keycloak-app-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.view_title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  //font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+  border-bottom: inset #eee 1px;
 }
 
-@layer components {
-  .form-control {
-    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
-  }
+.linkButton {
+  font-size: 13px;
+  padding: 7px 8px !important;
+  line-height: 0 !important;
+  background-color: #0d47a1;
+}
 
-  .form-error {
-    @apply text-red-600 text-sm mt-1;
-  }
+.linkButton:hover {
+  opacity: 0.8;
+}
+
+.linkButton mat-icon {
+  font-size: 18px;
+  height: auto !important;
+  width: auto !important;
+  margin-right: 3px;
+  color: #fff;
+}
+
+.linkButton span {
+  text-decoration: none;
+  color: #fff;
+}
+
+
+/* ------- END VIEW STYLES  -----------*/
+
+svg#clouds {
+  position: fixed;
+  bottom: -160px;
+  left: -230px;
+  z-index: -10;
+  width: 1920px;
+}
+
+
+/** ---- TOAST Messages -----**/
+
+.message-error {
+  background-color: #FADBD8 !important;
+  border-left: solid red 7px;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+.message-success {
+  background-color: #ABEBC6;
+  border-left: solid green 7px;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
 }

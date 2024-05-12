@@ -5,6 +5,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { APP_INITIALIZER } from '@angular/core';
 import { AuthConfig, OAuthService, provideOAuthClient } from 'angular-oauth2-oidc';
 import { provideHttpClient } from '@angular/common/http';
@@ -13,10 +14,10 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { UsersComponent } from './components/pages/users/users.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { ModelComponent } from './components/shared/ui/model/model.component';
-import { UserFormComponent } from './components/forms/user-form/user-form.component';
+import { provideAnimations, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserFormComponent } from './components/pages/forms/user-form/user-form.component';
 import { ProjectsComponent } from './components/pages/projects/projects.component';
+import { SharedModule } from './components/shared/shared.module';
 
 export const authCodeFlowConfig: AuthConfig = {
   issuer: environment.keycloakConfig.issuer,
@@ -50,11 +51,12 @@ function initializeOAuth(oauthService: OAuthService): Promise<void> {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatSlideToggleModule,
     CommonModule, 
     RouterOutlet,
     RouterLink,
     ReactiveFormsModule,
-    ModelComponent,
+    SharedModule,
     CommonModule,
     ToastrModule.forRoot({
       //positionClass: 'toast-top-full-width'
@@ -62,6 +64,7 @@ function initializeOAuth(oauthService: OAuthService): Promise<void> {
       positionClass: 'toast-top-center',
       preventDuplicates: true,
     }),
+    BrowserAnimationsModule,
   ],
   providers: [
     provideHttpClient(),
