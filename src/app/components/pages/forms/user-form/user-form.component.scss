@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.inputs{
+  width: 100%;
+}
+
+.section {
+  justify-content: space-between;
+}
+
+.column {
+  padding: 2%;
+  float: left;
+  width: 40%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

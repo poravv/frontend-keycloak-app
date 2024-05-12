@@ -1,0 +1,67 @@
+<h3>Nuevo Usuario</h3>
+<form [formGroup]="userForm" style="width: 100%;" novalidate class="crdForm">
+  <div class="row">
+    <div class="column">
+      <div style="width: 100%;height: 100%; padding: 5px;">
+        <p>
+          <mat-form-field appearance="outline" class="inputs">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" [autocomplete]="false">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline" class="inputs">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline" class="inputs">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="firstName">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline" class="inputs">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="lastName">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline" class="inputs">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+    <div class="column" *ngIf="data==null">
+      <div style="width: 100%; padding: 5px; height: 100%;">
+        <section class="section">
+          <h4>Seleccione roles:</h4>
+          <div *ngFor="let item of roles">
+            <mat-checkbox id="{{item.id}}" name="{{item.name}}"
+              (change)="checkRoles($event)">{{item.name}}</mat-checkbox>
+          </div>
+        </section>
+        <p>
+          <mat-form-field appearance="outline" class="inputs">
+            <mat-label>Sucursal</mat-label>
+            <mat-select [required]="true" [(value)]="groupSelected"> 
+              <mat-option [value]="item" *ngFor="let item of userGroups">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+  </div>
+  <button style="margin-left:10px ;" [disabled]="userForm.invalid" (click)="onSubmit()" mat-flat-button color="primary">Guardar</button>
+  <button *ngIf="data==null" style="margin-left:10px ;" type="button" (click)="clearForm()" mat-flat-button color="accent">Limpiar</button>
+  <button style="margin-left:10px ;" type="button" (click)="cancel()" mat-stroked-button color="warn">Cancelar</button>
+</form>
