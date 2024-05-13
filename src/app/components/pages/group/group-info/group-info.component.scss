@@ -1,0 +1,24 @@
+.dialog{
+    padding: 3%;
+}
+
+.section {
+    justify-content: space-between;
+  }
+  
+  .column {
+    padding: 2%;
+    float: left;
+    width: 40%;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

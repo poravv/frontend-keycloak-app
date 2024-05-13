@@ -1,11 +1,42 @@
 .container{
+    width: 100%;
     margin: 2%;
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
     button{
         font-size: 16px;
     }
 }
+
+.navbar{
+    display: flex; /* Enable flexbox for positioning */
+    justify-content: space-between; /* Distribute space between items */
+    align-items: center; /* Align items vertically */
+    background-color: #f0f0f0; /* Adjust background color as needed */
+    padding: 10px 20px; /* Add padding for spacing */
+    
+}
+
+.nav-links {
+    width: 100%;
+    list-style: none; /* Remove default list bullets */
+    margin: 0; /* Remove default list margins */
+    padding: 0; /* Remove default list padding */
+    //background-color: red;
+    align-items: center;
+    display: flex;
+  }
+  
+  .nav-item {
+    display: inline-block; /* Allow inline-block for spacing */
+    margin-right: 20px; /* Add spacing between nav items */
+    cursor: pointer;
+  }
+  
+  .nav-item:last-child {
+    margin-right: 0; /* Remove margin from last item */
+  }
 
 .content {
     margin: 1%;

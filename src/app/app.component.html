@@ -1,21 +1,14 @@
-<header>
-  <div class="container">
-    <img src="https://www.marcus-povey.co.uk/wp-content/avatar.png" width="100"/>
-    <button [routerLink]="'/home'" mat-button >Home</button>
-    
-    <button mat-button [matMenuTriggerFor]="components">Components</button>
-
-    <mat-menu #components="matMenu">
-      <button mat-menu-item [routerLink]="'/users/list'" >Usuarios</button>
-      <button mat-menu-item [routerLink]="'/projects'">Project</button>
-      <button mat-menu-item >Grupos</button>
-    </mat-menu>
-    <button (click)="logout()" mat-button >Logout</button>
-  </div>
-</header>
-
+<nav class="navbar">
+  <ul class="nav-links">
+    <img src="https://www.marcus-povey.co.uk/wp-content/avatar.png" width="100" />
+    <button class="nav-item" [routerLink]="'/home'" mat-button>Home</button>
+    <button class="nav-item" mat-button [routerLink]="'/users/list'">Usuarios</button>
+    <button class="nav-item" mat-button [routerLink]="'/group/list'">Grupos</button>
+  </ul>
+  <button (click)="logout()" mat-button>Logout</button>
+</nav>
 <div class="content">
   <div class="subcontent">
-    <router-outlet></router-outlet>
+    <router-outlet />
   </div>
 </div>
