@@ -22,22 +22,11 @@ export class UsersService {
     });
   }
 
-  getAllUsersForSucursal():Observable<any> {
+  getAllUsersForSucursal(sucursalId:string):Observable<any> {
     
-    /*
-    const payload: any = jwtDecode(this.oauthService.getAccessToken());
-    var sucursalId='0';
-    this.getUser(payload['name']).subscribe((userRes) => {
-      
-      console.log(userRes[0]);
-      sucursalId=userRes[0].sucursal;
-    });
-    */
+    console.log(sucursalId);
 
-    const claims = this.oauthService.getIdentityClaims();
-    const sucursalId = claims['sub']||[];
-
-    return this.httpClient.get(`${environment.apiUrl}/users?sucursal=${sucursalId}`, {
+    return this.httpClient.get(`${environment.apiUrl}/users?q=sucursal:${sucursalId}`, {
       headers: {
         'Authorization': `Bearer ${this.oauthService.getAccessToken()}`,
         //'Access-Control-Allow-Origin': '*',
@@ -108,7 +97,7 @@ export class UsersService {
       headers: {
         'Authorization': `Bearer ${this.oauthService.getAccessToken()}`,
         //'Access-Control-Allow-Origin': '*',
-        'responseType': 'text'
+        //'responseType': 'text'
       }
     });
   }

@@ -35,10 +35,10 @@
         <button mat-mini-fab [routerLink]="['/users/edit',element.id]" color="primary" class="iconos" matTooltip="Editar">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-mini-fab color="accent" class="iconos" matTooltip="Previsualizar">
-          <mat-icon>preview</mat-icon>
+        <button (click)="openDialog(element)" mat-mini-fab color="primary" class="iconos" matTooltip="Previsualizar">
+          <mat-icon>visibility</mat-icon>
         </button>
-        <button mat-mini-fab color="warn" class="iconos" matTooltip="Eliminar">
+        <button (click)="element.id && confirmDelete(element)" mat-mini-fab color="primary" class="iconos" matTooltip="Eliminar">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

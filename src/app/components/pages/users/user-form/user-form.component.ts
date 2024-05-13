@@ -135,7 +135,7 @@ export class UserFormComponent implements OnInit {
         .updateUser(this.data.id ?? "", this.userForm.value)
         .subscribe({
           next: (response) => {
-            console.log(response);
+            //console.log(response);
             this.resetUserForm();
             this.router.navigate(['users/list']);
             this.openMessage("Actualización satisfactoria");
@@ -159,7 +159,7 @@ export class UserFormComponent implements OnInit {
               if (userRes[0].id) {
                 this.usersService.createUserRole(userRes[0].id, this.roleSelected).subscribe((roleRes) => {
                   if (roleRes == null) {
-                    console.log(userRes);
+                    //console.log(userRes);
                     this.resetUserForm();
                     this.router.navigate(['users/list']);
                     this.openMessage("Creación satisfactoria");
@@ -196,7 +196,7 @@ export class UserFormComponent implements OnInit {
     this._snackBar.open(message, 'Close', {
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      duration: 3 * 1000,
+      duration: 3 * 1000
     });
   }
 }

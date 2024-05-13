@@ -15,9 +15,11 @@ import { UsersComponent } from './components/pages/users/users.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { provideAnimations, BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserFormComponent } from './components/pages/forms/user-form/user-form.component';
+import { UserFormComponent } from './components/pages/users/user-form/user-form.component';
 import { ProjectsComponent } from './components/pages/projects/projects.component';
 import { SharedModule } from './components/shared/shared.module';
+import { InfoComponent } from './components/pages/users/info/info.component';
+import { AlertComponent } from './components/pages/alert/alert.component';
 
 export const authCodeFlowConfig: AuthConfig = {
   issuer: environment.keycloakConfig.issuer,
@@ -46,7 +48,9 @@ function initializeOAuth(oauthService: OAuthService): Promise<void> {
     HomeComponent,
     UsersComponent,
     UserFormComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    InfoComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
-<h3>Nuevo Usuario</h3>
+<h3 *ngIf="data==null">Nuevo Usuario</h3>
+<h3 *ngIf="data!=null">Editar Usuario</h3>
 <form [formGroup]="userForm" style="width: 100%;" novalidate class="crdForm">
   <div class="row">
     <div class="column">

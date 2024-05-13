@@ -1,0 +1,48 @@
+<div class="dialog">
+    <h3 style="color: black;">Detalle de usuario </h3>
+    <mat-dialog-content>
+        <div class="row">
+            <div class="column title">
+                Usuario:
+            </div>
+            <div class="column">
+                {{user.username}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="column title">
+                Nombre:
+            </div>
+            <div class="column">
+                {{user.firstName}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="column title">
+                Apellido:
+            </div>
+            <div class="column">
+                {{user.lastName}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="column title">
+                Correo:
+            </div>
+            <div class="column">
+                {{user.email}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="column title">
+                Activo:
+            </div>
+            <div class="column">
+                {{user.enabled ? 'Sí': 'No'}}
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Salir</button>
+    </mat-dialog-actions>
+</div>
